@@ -309,6 +309,13 @@ body{overscroll-behavior-y:none}
 @keyframes accIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .acc-hint{font-size:.78rem;font-weight:700;color:#c9d6f2;letter-spacing:.03em}
 </style>
+<style id="instTheme">
+/* ---------- Hide install UI once the app is installed ---------- */
+body.app-installed #installBtn{display:none !important}
+body.app-installed .install-note{display:none !important}
+body.app-installed .hero-actions + p{display:none !important}
+body.app-installed #appNav button[data-act="install"]{display:none !important}
+</style>
 </head>
 <body>
 <div id="splash" aria-hidden="true"><div class="sp-logo"><img id="splashLogo" alt="" /></div><div class="sp-name">MIZAAN</div><div class="sp-sub">TESTING SERVICE</div><div class="sp-bar"><i></i></div></div>
@@ -800,6 +807,25 @@ paintInstallBtn();
         head.setAttribute('aria-expanded', nowClosed?'false':'true');
       });
     }
+    apply();
+  }catch(e){}
+})();
+</script>
+
+<script id="instApp">
+(function(){
+  try{
+    var apply=function(){
+      var standalone=false;
+      try{ standalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true; }catch(e){}
+      var flagged=false;
+      try{ flagged=localStorage.getItem('mzInstalled')==='1'; }catch(e){}
+      if(standalone||flagged) document.body.classList.add('app-installed');
+    };
+    window.addEventListener('appinstalled',function(){
+      try{ localStorage.setItem('mzInstalled','1'); }catch(e){}
+      apply();
+    });
     apply();
   }catch(e){}
 })();
