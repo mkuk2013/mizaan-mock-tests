@@ -298,6 +298,17 @@ body{overscroll-behavior-y:none}
 }
 @media (prefers-color-scheme: dark){.class-head{background:linear-gradient(120deg,#0d2650,#123063)}}
 </style>
+<style id="accTheme">
+/* ---------- Class accordion (dropdown) ---------- */
+.class-card{scroll-margin-top:96px}
+.class-head{cursor:pointer;user-select:none;-webkit-user-select:none}
+.class-head::after{content:"";flex:0 0 auto;width:11px;height:11px;margin-left:6px;border-right:3px solid var(--gold);border-bottom:3px solid var(--gold);transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s ease}
+.class-card.acc-closed .class-head::after{transform:rotate(-45deg) translate(-2px,2px)}
+.class-card.acc-closed .test-list{display:none}
+.class-card:not(.acc-closed) .test-list{animation:accIn .28s ease}
+@keyframes accIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.acc-hint{font-size:.78rem;font-weight:700;color:#c9d6f2;letter-spacing:.03em}
+</style>
 </head>
 <body>
 <div id="splash" aria-hidden="true"><div class="sp-logo"><img id="splashLogo" alt="" /></div><div class="sp-name">MIZAAN</div><div class="sp-sub">TESTING SERVICE</div><div class="sp-bar"><i></i></div></div>
@@ -750,6 +761,46 @@ paintInstallBtn();
         else if(act==='install'){ var ib=document.getElementById('installBtn'); if(ib) ib.click(); }
       });
     }
+  }catch(e){}
+})();
+</script>
+
+<script id="accApp">
+(function(){
+  try{
+    var openSet={}, closedSet={};
+    function key(card){ var x=card.querySelector('h3'); return x?x.textContent.trim():''; }
+    function apply(){
+      var cards=document.querySelectorAll('#classList .class-card');
+      cards.forEach(function(card,i){
+        var k=key(card); if(!k) return;
+        var unlocked=!!card.querySelector('.unlocked-tag');
+        var open;
+        if(closedSet[k]) open=false;
+        else if(openSet[k]) open=true;
+        else if(unlocked) open=true;
+        else open=(i===0);
+        card.classList.toggle('acc-closed', !open);
+        var head=card.querySelector('.class-head');
+        if(head) head.setAttribute('aria-expanded', open?'true':'false');
+      });
+    }
+    var list=document.getElementById('classList');
+    if(list){
+      new MutationObserver(function(){ apply(); }).observe(list,{childList:true});
+      list.addEventListener('click',function(e){
+        var head=e.target.closest('.class-head');
+        if(!head||!list.contains(head)) return;
+        if(e.target.closest('button,a')) return;
+        var card=head.closest('.class-card'); if(!card) return;
+        var k=key(card);
+        var nowClosed=card.classList.toggle('acc-closed');
+        if(nowClosed){ closedSet[k]=1; delete openSet[k]; }
+        else{ openSet[k]=1; delete closedSet[k]; setTimeout(function(){ card.scrollIntoView({behavior:'smooth',block:'start'}); },40); }
+        head.setAttribute('aria-expanded', nowClosed?'false':'true');
+      });
+    }
+    apply();
   }catch(e){}
 })();
 </script>
