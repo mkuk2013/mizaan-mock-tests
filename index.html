@@ -209,8 +209,98 @@ footer{border-top:4px solid var(--gold)}
   .qcard{padding:18px 16px}
 }
 </style>
+<style id="proTheme">
+/* ================= PRO APP THEME (additive upgrade) ================= */
+html{-webkit-tap-highlight-color:transparent}
+body{overscroll-behavior-y:none}
+::selection{background:var(--gold);color:#231a00}
+/* Sticky glass app header */
+.topbar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 6px 24px -12px rgba(10,31,68,.35)}
+.topbar-in{padding:10px 0}
+.brandlogo{filter:drop-shadow(0 2px 6px rgba(10,31,68,.18))}
+/* View transitions */
+.view.on{animation:viewIn .3s cubic-bezier(.2,.7,.3,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* Hero upgrade */
+.hero{position:relative;overflow:hidden;background:radial-gradient(720px 340px at 85% -60px,rgba(242,183,5,.28),transparent 60%),radial-gradient(600px 300px at -10% 110%,rgba(38,84,180,.35),transparent 55%),linear-gradient(155deg,#123063 0%,var(--navy) 45%,var(--navy-deep) 100%)}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1.4px);background-size:22px 22px;pointer-events:none;mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 70%);-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 70%)}
+.hero .wrap{position:relative;z-index:1}
+.hero-tag{text-shadow:0 4px 24px rgba(0,0,0,.35)}
+.btn-gold{background:linear-gradient(180deg,#ffc61a,var(--gold));box-shadow:0 10px 22px -10px rgba(242,183,5,.75),inset 0 1px 0 rgba(255,255,255,.5)}
+.btn{transition:transform .12s ease,box-shadow .2s ease,background-color .15s ease,color .15s ease,border-color .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-navy{box-shadow:0 10px 22px -12px rgba(10,31,68,.8)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
+.hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:12px 8px;text-align:center;backdrop-filter:blur(4px)}
+.hstat b{display:block;font-family:"Archivo";font-weight:900;font-size:1.35rem;color:#fff;line-height:1.1}
+.hstat span{font-size:.74rem;font-weight:700;letter-spacing:.08em;color:#c9d6f2;text-transform:uppercase}
+@media (max-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr);gap:7px}.hstat b{font-size:1.05rem}.hstat span{font-size:.6rem}}
+/* Section heads */
+.sec-head{background:linear-gradient(90deg,var(--navy),var(--navy-mid));border-left:5px solid var(--gold);border-radius:10px;box-shadow:0 10px 22px -10px rgba(10,31,68,.55)}
+/* Panels */
+.panel{border-radius:18px;box-shadow:0 2px 4px rgba(10,31,68,.05),0 18px 36px -18px rgba(10,31,68,.25)}
+.panel-head{background:linear-gradient(90deg,var(--navy),var(--navy-mid))}
+/* Prizes */
+.prize{border-radius:18px;box-shadow:0 14px 30px -16px rgba(10,31,68,.35)}
+.prize.first{background:linear-gradient(150deg,var(--navy-mid),var(--navy) 55%,var(--navy-deep));box-shadow:0 18px 38px -14px rgba(10,31,68,.65),0 0 0 2px var(--gold) inset}
+/* Class cards */
+.class-card{border-radius:20px;box-shadow:0 2px 4px rgba(10,31,68,.05),0 22px 44px -20px rgba(10,31,68,.30);border:1px solid var(--line)}
+.class-head{background:linear-gradient(120deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;border-bottom:3px solid var(--gold)}
+.class-head h3{color:#fff}
+.class-head .subs{color:#c9d6f2}
+.class-head .class-meta{color:var(--gold)}
+.class-badge{box-shadow:0 0 0 2px var(--gold),0 8px 18px -6px rgba(0,0,0,.5);background:#fff;color:var(--navy)}
+.class-badge.goldb{background:var(--gold);color:#231a00}
+.test-item{border-radius:16px;transition:transform .15s ease,box-shadow .2s ease,border-color .15s ease}
+.test-item:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 16px 30px -16px rgba(10,31,68,.4)}
+.test-item button{width:100%}
+/* Test player */
+.player-head{background:linear-gradient(120deg,var(--navy),var(--navy-mid));box-shadow:0 10px 26px -12px rgba(10,31,68,.7)}
+.progress{height:12px;box-shadow:inset 0 1px 3px rgba(10,31,68,.18)}
+.progress>i{background:linear-gradient(90deg,var(--gold-dark),var(--gold),#ffc61a);box-shadow:0 0 12px rgba(242,183,5,.55)}
+.qcard{border-radius:20px;box-shadow:0 2px 4px rgba(10,31,68,.05),0 24px 48px -22px rgba(10,31,68,.35)}
+.opt{border-radius:14px;transition:border-color .15s ease,background-color .15s ease,transform .1s ease}
+.opt:hover{border-color:var(--gold)}
+.opt:active{transform:scale(.99)}
+.qdots{border-radius:16px}
+.qdot{border-radius:10px}
+/* Result */
+.score-hero{background:radial-gradient(420px 200px at 50% -40px,rgba(242,183,5,.35),transparent 60%),linear-gradient(160deg,var(--navy-mid),var(--navy) 60%,var(--navy-deep));border-radius:20px;box-shadow:0 24px 48px -20px rgba(10,31,68,.6)}
+.stat{border-radius:16px;border-top:4px solid var(--gold)}
+.review-item{border-radius:16px}
+/* Modals become bottom sheets on phones (app style) */
+@media (max-width:640px){
+  .modal{align-items:flex-end;padding:0}
+  .modal-card{border-radius:20px 20px 0 0;max-height:92vh;padding:22px 20px calc(20px + env(safe-area-inset-bottom))}
+  @media (prefers-reduced-motion: no-preference){.modal-card{animation:sheetUp .26s cubic-bezier(.2,.8,.3,1)}}
+}
+@keyframes sheetUp{from{transform:translateY(36px);opacity:.4}to{transform:none;opacity:1}}
+/* Splash screen */
+#splash{position:fixed;inset:0;z-index:200;background:linear-gradient(160deg,var(--navy-mid),var(--navy) 55%,var(--navy-deep));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:opacity .45s ease,visibility .45s}
+#splash.hide{opacity:0;visibility:hidden}
+#splash .sp-logo{background:#fff;border-radius:20px;padding:14px 18px;box-shadow:0 24px 50px -18px rgba(0,0,0,.6)}
+#splash .sp-logo img{height:64px;width:auto;display:block}
+#splash .sp-name{color:#fff;font-family:"Archivo";font-weight:900;letter-spacing:.24em;margin-top:16px;font-size:1.05rem}
+#splash .sp-sub{color:var(--gold);font-family:"Archivo";font-weight:700;letter-spacing:.34em;font-size:.68rem}
+#splash .sp-bar{width:130px;height:4px;border-radius:99px;background:rgba(255,255,255,.18);margin-top:20px;overflow:hidden}
+#splash .sp-bar i{display:block;height:100%;width:40%;border-radius:99px;background:var(--gold);animation:spLoad 1s ease-in-out infinite}
+@keyframes spLoad{0%{transform:translateX(-110%)}100%{transform:translateX(340%)}}
+/* Bottom app navigation (phones) */
+#appNav{display:none}
+@media (max-width:860px){
+  body.nav-on{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+  #appNav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -10px 30px -18px rgba(10,31,68,.45);padding:6px 8px calc(6px + env(safe-area-inset-bottom));gap:4px}
+  body:not(.nav-on) #appNav{display:none}
+  #appNav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;border-radius:12px;padding:7px 2px 5px;font-family:"Archivo";font-weight:700;font-size:.66rem;letter-spacing:.04em;color:var(--muted);cursor:pointer;min-height:52px}
+  #appNav button svg{width:23px;height:23px}
+  #appNav button.active{color:var(--navy);background:var(--gold-soft)}
+  @media (prefers-color-scheme: dark){#appNav button.active{color:var(--gold)}}
+}
+@media (prefers-color-scheme: dark){.class-head{background:linear-gradient(120deg,#0d2650,#123063)}}
+</style>
 </head>
 <body>
+<div id="splash" aria-hidden="true"><div class="sp-logo"><img id="splashLogo" alt="" /></div><div class="sp-name">MIZAAN</div><div class="sp-sub">TESTING SERVICE</div><div class="sp-bar"><i></i></div></div>
 
 <!-- ================= HOME VIEW ================= -->
 <div id="homeView" class="view on">
@@ -233,7 +323,8 @@ footer{border-top:4px solid var(--gold)}
       <p style="font-size:.88rem;margin-top:12px">Install this page as an app on your phone — it opens full-screen like a real app, and your unlocked classes and best scores stay saved on your device.</p>
     </div>
     <div class="hero-tag">Test Your Knowledge.<span>Earn Your Future.</span></div>
-  </div></div>
+  </div>
+  <div class="wrap"><div class="hero-stats"><div class="hstat"><b>20</b><span>Mock Tests</span></div><div class="hstat"><b>2,000</b><span>MCQs</span></div><div class="hstat"><b>4</b><span>Classes</span></div><div class="hstat"><b>100</b><span>Min / Test</span></div></div></div></div>
 
   <section id="prizes"><div class="wrap">
     <div class="sec-head">SCHOLARSHIP BENEFITS</div>
@@ -623,6 +714,44 @@ function closeInstallHelp(){ document.getElementById("installModal").style.displ
 
 renderClasses();
 paintInstallBtn();
+</script>
+
+<nav id="appNav" aria-label="App">
+  <button type="button" data-act="home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</button>
+  <button type="button" data-act="tests"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>Mock Tests</button>
+  <button type="button" data-act="prizes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a2 2 0 0 0 0 4h3M17 6h3a2 2 0 0 1 0 4h-3"/></svg>Prizes</button>
+  <button type="button" data-act="install"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M7.5 10.5 12 15l4.5-4.5"/><path d="M4 19h16"/></svg>Install App</button>
+</nav>
+<script id="proApp">
+(function(){
+  try{
+    var logo=document.querySelector('.brandlogo'), sp=document.getElementById('splash'), si=document.getElementById('splashLogo');
+    if(logo&&si) si.src=logo.src;
+    var hide=function(){ if(sp){ sp.classList.add('hide'); setTimeout(function(){ sp.remove(); },500);} };
+    if(sessionStorage.getItem('mzSplash')){ if(sp) sp.remove(); }
+    else{ sessionStorage.setItem('mzSplash','1'); window.addEventListener('load',function(){ setTimeout(hide,650); }); setTimeout(hide,2600); }
+    var views=['homeView','startView','testView','resultView'];
+    var sync=function(){
+      var home=document.getElementById('homeView');
+      document.body.classList.toggle('nav-on', !!(home&&home.classList.contains('on')));
+    };
+    var obs=new MutationObserver(sync);
+    views.forEach(function(id){ var el=document.getElementById(id); if(el) obs.observe(el,{attributes:true,attributeFilter:['class']}); });
+    sync();
+    var nav=document.getElementById('appNav');
+    if(nav){
+      nav.addEventListener('click',function(e){
+        var b=e.target.closest('button'); if(!b) return;
+        nav.querySelectorAll('button').forEach(function(x){ x.classList.toggle('active',x===b); });
+        var act=b.getAttribute('data-act');
+        if(act==='home') window.scrollTo({top:0,behavior:'smooth'});
+        else if(act==='tests'){ var t=document.getElementById('classes'); if(t) t.scrollIntoView({behavior:'smooth'}); }
+        else if(act==='prizes'){ var p=document.getElementById('prizes'); if(p) p.scrollIntoView({behavior:'smooth'}); }
+        else if(act==='install'){ var ib=document.getElementById('installBtn'); if(ib) ib.click(); }
+      });
+    }
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
